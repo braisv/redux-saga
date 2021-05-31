@@ -1,10 +1,10 @@
 import "./App.css";
-import Home from "./pages/Home";
+import Router from "./routes/Router";
 
 const App = () => {
   return (
     <div className="App">
-      <Home />
+      <Router />
     </div>
   );
 };
