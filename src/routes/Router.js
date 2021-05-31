@@ -10,7 +10,7 @@ const Router = () => {
       <Switch>
         <PublicRoute restricted={true} component={Login} path="/" exact />
         <PrivateRoute component={Home} path="/home" exact />
-        <PrivateRoute component={Profile} path="/profile" exact />
+        <PrivateRoute component={Profile} path="/user/:id" exact />
         <PrivateRoute component={NoMatch} path="*" />
       </Switch>
     </BrowserRouter>

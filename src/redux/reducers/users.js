@@ -2,7 +2,10 @@ import * as type from "../types";
 
 const initialState = {
   users: [],
-  loading: false,
+  currentPage: 1,
+  totalPages: 1,
+  totalUsers: 0,
+  loading: true,
   error: null,
 };
 
@@ -17,7 +20,10 @@ const users = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        users: action.users,
+        users: action.users.data,
+        currentPage: action.users.page,
+        totalPages: action.users.total_pages,
+        totalUsers: action.users.total,
       };
     case type.GET_USERS_FAILED:
       return {

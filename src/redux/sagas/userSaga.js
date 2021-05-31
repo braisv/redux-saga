@@ -2,8 +2,9 @@ import { call, put, takeEvery } from "redux-saga/effects";
 import { getUsers } from "../../services/userService";
 
 function* fetchUsers(action) {
+  console.log({ action });
   try {
-    const users = yield call(getUsers);
+    const users = yield call(getUsers, action.payload);
     yield put({ type: "GET_USERS_SUCCESS", users });
   } catch (err) {
     console.log({ err });
