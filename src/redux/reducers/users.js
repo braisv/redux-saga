@@ -17,7 +17,7 @@ const users = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        users: action.users.data,
+        users: action.users,
       };
     case type.GET_USERS_FAILED:
       return {

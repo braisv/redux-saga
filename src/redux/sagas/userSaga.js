@@ -1,8 +1,9 @@
 import { call, put, takeEvery } from "redux-saga/effects";
+import { getUsers } from "../../services/userService";
 
-const apiUrl = "https://reqres.in/api/users";
+// const apiUrl = "https://reqres.in/api/users";
 
-const getApi = () => {
+/* const getApi = () => {
   return fetch(apiUrl, {
     method: "GET",
     headers: {
@@ -13,13 +14,14 @@ const getApi = () => {
     .catch((err) => {
       throw err;
     });
-};
+}; */
 
 function* fetchUsers(action) {
   try {
-    const users = yield call(getApi);
+    const users = yield call(getUsers);
     yield put({ type: "GET_USERS_SUCCESS", users });
   } catch (err) {
+    console.log({ err });
     yield put({ type: "GET_USERS_FAILED", message: err.message });
   }
 }
