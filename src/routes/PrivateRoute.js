@@ -7,7 +7,6 @@ import { isLogin } from "../services/authService";
 const PrivateRoute = ({ user, component: Component, ...rest }) => {
   const dispatch = useDispatch();
   useEffect(() => {
-    console.log("ROUTE!");
     dispatch(getUsers());
   }, []);
   return (

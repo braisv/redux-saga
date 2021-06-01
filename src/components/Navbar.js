@@ -8,7 +8,7 @@ const Navbar = () => {
   console.log({ pathname });
   const title = () => {
     if (pathname === "/login") return "Login";
-    if (pathname === "/") return "Users List";
+    if (pathname === "/") return "User List";
     if (pathname.includes("user")) return "User";
     return "Page not found";
   };
@@ -22,6 +22,7 @@ const NavbarContainer = styled.div`
   color: ${theme.colors.white};
   width: 100vw;
   height: ${theme.content.navbarSmall};
+  font-size: ${theme.fontSize.title.small};
   display: flex;
   justify-content: space-around;
   align-items: center;

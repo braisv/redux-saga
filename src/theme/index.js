@@ -1,14 +1,29 @@
 export const theme = {
   colors: {
-    darkBackground: "rgb(37, 40, 42)",
-    lightBackground: "rgb(0, 119, 200)",
-    regularBackground: "rgb(12, 27, 35)",
-    purpleBackground: "rgb(88, 70, 139)",
-    white: "rgb(255, 255, 255)",
+    darkBackground: "#25282A",
+    dark: "#25282A",
+    lightBackground: "#0077C8",
+    blue: "#0077C8",
+    regularBackground: "#0C1B23",
+    darkBlue: "#0C1B23",
+    purple: "#58468B",
+    white: "#FFFFFF",
     black: "#25282A",
   },
   fontFamily: {
     regular: "core_sans_regular, Arial, Helvetica, sans-serif",
+  },
+  fontSize: {
+    title: {
+      big: "24px",
+      medium: "22px",
+      small: "20px",
+    },
+    regular: {
+      big: "18px",
+      medium: "16px",
+      small: "14px",
+    },
   },
   breakpoints: {
     big: "1280px",

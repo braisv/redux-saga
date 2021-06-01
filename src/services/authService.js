@@ -26,7 +26,7 @@ export const logIn = async (props, info) => {
 
 export const logOut = (history) => {
   localStorage.removeItem("token");
-  history.push("/home");
+  history.push("/");
 };
 
 export const isLogin = () => {

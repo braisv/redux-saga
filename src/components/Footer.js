@@ -19,4 +19,5 @@ const FooterContainer = styled.div`
   position: absolute;
   bottom: 0;
   left: 0;
+  margin-bottom: -${theme.content.footerSmall};
 `;
