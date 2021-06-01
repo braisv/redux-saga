@@ -3,6 +3,7 @@ import { Login, Home, NoMatch, Profile } from "../pages";
 
 import PublicRoute from "./PublicRoute";
 import PrivateRoute from "./PrivateRoute";
+import Footer from "../components/Footer";
 
 const Router = () => {
   return (
@@ -13,6 +14,7 @@ const Router = () => {
         <PrivateRoute component={Profile} path="/user/:id" exact />
         <PrivateRoute component={NoMatch} path="*" />
       </Switch>
+      <Footer />
     </BrowserRouter>
   );
 };
