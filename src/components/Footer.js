@@ -12,11 +12,11 @@ const FooterContainer = styled.div`
   background-color: ${theme.colors.regularBackground};
   color: ${theme.colors.white};
   width: 100vw;
-  height: 5vh;
+  height: ${theme.content.footerSmall};
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
+  position: absolute;
   bottom: 0;
   left: 0;
 `;

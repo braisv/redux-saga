@@ -1,11 +1,12 @@
 import "./App.css";
 import Router from "./routes/Router";
+import { MainContainer } from "./components/containers/content";
 
 const App = () => {
   return (
-    <div className="App">
+    <MainContainer className="App">
       <Router />
-    </div>
+    </MainContainer>
   );
 };
 

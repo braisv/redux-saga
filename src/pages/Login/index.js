@@ -1,12 +1,14 @@
 import { useState } from "react";
+import { PageContent } from "../../components/containers/content";
 import { logIn } from "../../services/authService";
+import { LoginForm } from "./styles";
 
 const Login = (props) => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   return (
-    <div>
-      <form onSubmit={() => logIn(props, { email, password })}>
+    <PageContent>
+      <LoginForm onSubmit={() => logIn(props, { email, password })}>
         <label>Email</label>
         <input
           type="text"
@@ -23,9 +25,11 @@ const Login = (props) => {
           placeholder="somemail@mail.mail"
           onChange={({ target }) => setPassword(target.value)}
         />
-      </form>
-      <button onClick={() => logIn(props, { email, password })}>Submit</button>
-    </div>
+        <button onClick={() => logIn(props, { email, password })}>
+          Submit
+        </button>
+      </LoginForm>
+    </PageContent>
   );
 };
 
