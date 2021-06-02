@@ -24,3 +24,16 @@ export const PageContent = styled.div`
   padding: 15px;
   position: relative;
 `;
+
+export const Row = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const Column = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;

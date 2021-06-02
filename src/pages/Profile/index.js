@@ -1,7 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router";
+import {
+  SquareMediumButton,
+  SquareButtonDelete,
+  SquareButtonEdit,
+} from "../../components/buttons/content";
+import { PageContent, Row } from "../../components/containers/content";
 import { getUserById } from "../../services/userService";
+import {
+  ProfileCard,
+  ProfileContainer,
+  Avatar,
+  CardContent,
+  ButtonsContainer,
+  CardActions,
+} from "./styles";
 
 const Profile = () => {
   const history = useHistory();
@@ -34,33 +48,62 @@ const Profile = () => {
   };
 
   return (
-    <div>
-      {loading && <p>Loading...</p>}
-      {user && !loading && (
-        <div>
-          <div>
-            <img src={user.avatar} alt={user.first_name} />
-          </div>
-          <span>{user.first_name}</span>
-          <span>{user.last_name}</span>
-          <span>{user.email}</span>
-        </div>
-      )}
-      <button onClick={() => history.push("/home")}>Back</button>
-      <button
-        disabled={+id < 2}
-        onClick={() => history.push(`/user/${+id - 1}`)}
-      >
-        Previous
-      </button>
-      <button
-        disabled={totalUsers && totalUsers <= +id}
-        onClick={() => history.push(`/user/${+id + 1}`)}
-      >
-        Next
-      </button>
-      {error && <p>{error}</p>}
-    </div>
+    <PageContent>
+      <ProfileContainer>
+        {loading && <p>Loading...</p>}
+        {user && !loading && (
+          <ProfileCard>
+            <Avatar>
+              <img src={user.avatar} alt={user.first_name} />
+            </Avatar>
+            <CardContent>
+              <span className="id">{`id: ${user.id}`}</span>
+              <span className="name">{`${user.first_name} ${user.last_name}`}</span>
+              <span>{user.email}</span>
+            </CardContent>
+            <CardActions>
+              <SquareButtonEdit
+                width="50%"
+                onClick={() => history.push(`/user/${+id - 1}`)}
+              >
+                Edit
+              </SquareButtonEdit>
+              <SquareButtonDelete
+                width="50%"
+                onClick={() => history.push(`/user/${+id + 1}`)}
+              >
+                Delete
+              </SquareButtonDelete>
+            </CardActions>
+          </ProfileCard>
+        )}
+        {error && <p>{error}</p>}
+        <ButtonsContainer>
+          <SquareMediumButton
+            className="back"
+            onClick={() => history.push("/")}
+          >
+            &#8629; Back
+          </SquareMediumButton>
+          <Row>
+            <SquareMediumButton
+              className="previous"
+              disabled={+id < 2}
+              onClick={() => history.push(`/user/${+id - 1}`)}
+            >
+              &#8592; Previous
+            </SquareMediumButton>
+            <SquareMediumButton
+              className="next"
+              disabled={totalUsers && totalUsers <= +id}
+              onClick={() => history.push(`/user/${+id + 1}`)}
+            >
+              Next &#8594;
+            </SquareMediumButton>
+          </Row>
+        </ButtonsContainer>
+      </ProfileContainer>
+    </PageContent>
   );
 };
 

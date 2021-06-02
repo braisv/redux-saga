@@ -44,51 +44,27 @@ export const MediumButton = styled(BigButton)`
 `;
 
 // Important or required actions 2
-export const MediumButtonWhite = styled(MediumButton)`
-  color: ${({ theme }) => theme.colors.primaryColor};
-  background-color: ${({ theme }) => theme.colors.white};
-  border: ${({ theme }) => `2px solid ${theme.colors.primaryColor}`};
-  :hover {
-    color: ${({ theme }) => theme.colors.white};
-    background-color: ${({ theme }) => theme.colors.primaryColor};
-    div[class^="css"] {
-      border-color: ${({ theme }) => theme.colors.white};
-      border-bottom-color: transparent;
-    }
-  }
-  :focus {
-    color: ${({ theme }) => theme.colors.primaryColor};
-    background-color: ${({ theme }) => theme.colors.white};
-    border: ${({ theme }) => `2px solid ${theme.colors.darkPrimaryColor}`};
-  }
-  div[class^="css"] {
-    border-color: ${({ theme }) => theme.colors.primaryColor};
-    border-bottom-color: transparent;
-  }
-  ${({ margins }) => (margins ? "margin: 0 10px;" : "")}
+export const SquareMediumButton = styled(MediumButton)`
+  border-radius: 0;
 `;
 
 // Less important or optional actions 1
-export const MediumButtonGrey = styled(MediumButton)`
-  color: ${({ theme }) => theme.colors.darkGrey};
-  background-color: ${({ theme }) => theme.colors.white};
-  border: ${({ theme }) => `2px solid ${theme.colors.darkGrey}`};
+export const SquareButtonDelete = styled(SquareMediumButton)`
+  background-color: ${theme.colors.delete};
   :hover {
-    color: ${({ theme }) => theme.colors.darkBrown};
-    background-color: ${({ theme }) => theme.colors.lightGrey};
-    div[class^="css"] {
-      border-color: ${({ theme }) => theme.colors.darkBrown};
-      border-bottom-color: transparent;
-    }
+    background-color: ${theme.colors.deleteActive};
   }
   :focus {
-    color: ${({ theme }) => theme.colors.darkGrey};
-    background-color: ${({ theme }) => theme.colors.white};
-    border: ${({ theme }) => `2px solid ${theme.colors.darkBrown}`};
+    background-color: ${theme.colors.deleteActive};
   }
-  div[class^="css"] {
-    border-color: ${({ theme }) => theme.colors.darkGrey};
-    border-bottom-color: transparent;
+`;
+
+export const SquareButtonEdit = styled(SquareMediumButton)`
+  background-color: ${theme.colors.edit};
+  :hover {
+    background-color: ${theme.colors.editActive};
   }
-  ${({ margins }) => (margins ? "margin: 0 10px;" : "")}
+  :focus {
+    background-color: ${theme.colors.editActive};
+  }
 `;

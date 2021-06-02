@@ -9,6 +9,10 @@ export const theme = {
     purple: "#58468B",
     white: "#FFFFFF",
     black: "#25282A",
+    delete: "#c23434",
+    deleteActive: "#912929",
+    edit: "#cc9139",
+    editActive: "#a3752f",
   },
   fontFamily: {
     regular: "core_sans_regular, Arial, Helvetica, sans-serif",
