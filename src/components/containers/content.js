@@ -4,10 +4,11 @@ import { theme } from "../../theme";
 export const MainContainer = styled.div`
   width: 100vw;
   max-width: 100vw;
-  height: calc(
+  min-height: calc(
     100vh - ${theme.content.navbarSmall} - ${theme.content.footerSmall}
   );
-  max-height: calc(
+  height: auto !important;
+  height: calc(
     100vh - ${theme.content.navbarSmall} - ${theme.content.footerSmall}
   );
   position: relative;
@@ -18,9 +19,11 @@ export const MainContainer = styled.div`
 
 export const PageContent = styled.div`
   width: 100%;
+  min-height: calc(
+    100vh - ${theme.content.navbarSmall} - ${theme.content.footerSmall}
+  );
   height: 100%;
   max-width: 100%;
-  max-height: 100%;
   padding: 15px;
   position: relative;
 `;

@@ -5,6 +5,7 @@ export const LoginContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   width: 100%;
   min-height: 100%;
   background-color: ${theme.colors.lightBackground};
@@ -18,6 +19,7 @@ export const LoginForm = styled.form`
   max-width: 350px;
   justify-content: center;
   font-size: ${theme.fontSize.title.small};
+  margin-bottom: 30px;
 
   input {
     background-color: transparent;

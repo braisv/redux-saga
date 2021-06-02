@@ -12,7 +12,7 @@ export const UserListContainer = styled.div`
 
 export const UserListGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   grid-gap: 15px;
   width: 100%;
   margin-bottom: 60px;

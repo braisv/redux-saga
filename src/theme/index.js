@@ -13,6 +13,11 @@ export const theme = {
     deleteActive: "#912929",
     edit: "#cc9139",
     editActive: "#a3752f",
+    success: '#28a860',
+    successActive: '#20874d',
+    neutral: '#919394',
+    neutralActive: '#6a6d6e'
+
   },
   fontFamily: {
     regular: "core_sans_regular, Arial, Helvetica, sans-serif",

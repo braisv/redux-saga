@@ -68,3 +68,25 @@ export const SquareButtonEdit = styled(SquareMediumButton)`
     background-color: ${theme.colors.editActive};
   }
 `;
+
+export const SquareButtonSuccess = styled(SquareMediumButton)`
+  background-color: ${theme.colors.success};
+  :hover {
+    background-color: ${theme.colors.successActive};
+  }
+  :focus {
+    background-color: ${theme.colors.successActive};
+  }
+`;
+
+export const SquareButtonNeutral = styled(SquareMediumButton)`
+  background-color: ${theme.colors.neutral};
+  :hover {
+    background-color: ${theme.colors.neutralActive};
+  }
+  :focus {
+    background-color: ${theme.colors.neutralActive};
+  }
+`;
+
+

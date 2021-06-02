@@ -5,6 +5,8 @@ import {
   SquareMediumButton,
   SquareButtonDelete,
   SquareButtonEdit,
+  SquareButtonNeutral,
+  SquareButtonSuccess,
 } from "../../components/buttons/content";
 import { PageContent, Row } from "../../components/containers/content";
 import { getUserById } from "../../services/userService";
@@ -15,6 +17,8 @@ import {
   CardContent,
   ButtonsContainer,
   CardActions,
+  InputText,
+  EmptyAvatar,
 } from "./styles";
 
 const Profile = () => {
@@ -24,6 +28,12 @@ const Profile = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState();
   const totalUsers = useSelector((state) => state.users.totalUsers);
+
+  const [firstName, setFirstName] = useState()
+  const [lastName, setLastName] = useState()
+  const [email, setEmail] = useState()
+  const [avatar, setAvatar] = useState()
+  const [edit, setEdit] = useState()
 
   useEffect(() => {
     let isCancelled = false;
@@ -38,7 +48,13 @@ const Profile = () => {
     if (isCancelled) return;
     try {
       const response = await getUserById({ page: Math.ceil(+id / 6) }, id);
-      if (response) setUser(response);
+      if (response) {
+        setUser(response);
+        setFirstName(response.first_name)
+        setLastName(response.last_name)
+        setEmail(response.email)
+        setAvatar(response.avatar)
+      }
       if (!response) setError("User not found");
       setLoading(false);
     } catch (err) {
@@ -52,29 +68,55 @@ const Profile = () => {
       <ProfileContainer>
         {loading && <p>Loading...</p>}
         {user && !loading && (
-          <ProfileCard>
-            <Avatar>
-              <img src={user.avatar} alt={user.first_name} />
-            </Avatar>
+          <ProfileCard edit={edit}>
+            {user.avatar4 || avatar ? <Avatar>
+              <img src={user.avatar4 || avatar} alt={user.first_name} />
+            </Avatar> : <EmptyAvatar>
+              <span>No avatar</span>
+            </EmptyAvatar>}
             <CardContent>
+            {!edit && 
+              <>
               <span className="id">{`id: ${user.id}`}</span>
               <span className="name">{`${user.first_name} ${user.last_name}`}</span>
               <span>{user.email}</span>
+              </>}
+              {edit &&
+              <>
+              <InputText type='text' placeholder='First name' onChange={({ target }) => setFirstName(target.value)} value={firstName} />
+              <InputText type='text' placeholder='Last name' onChange={({ target }) => setLastName(target.value)} value={lastName} />
+              <InputText type='text' placeholder='Email' onChange={({ target }) => setEmail(target.value)} value={email} />
+              <InputText type='text' placeholder='Avatar url' onChange={({ target }) => setAvatar(target.value)} value={avatar} />
+              </>}
             </CardContent>
-            <CardActions>
-              <SquareButtonEdit
+            {edit && <CardActions>
+              <SquareButtonNeutral
                 width="50%"
-                onClick={() => history.push(`/user/${+id - 1}`)}
+                onClick={() => setEdit(!edit)}
               >
-                Edit
-              </SquareButtonEdit>
+                Cancel
+              </SquareButtonNeutral>
+              <SquareButtonSuccess
+                width="50%"
+                onClick={() => history.push(`/user/${+id + 1}`)}
+              >
+                Update
+              </SquareButtonSuccess>
+            </CardActions>}
+            {!edit && <CardActions>
               <SquareButtonDelete
                 width="50%"
                 onClick={() => history.push(`/user/${+id + 1}`)}
               >
                 Delete
               </SquareButtonDelete>
-            </CardActions>
+              <SquareButtonEdit
+                width="50%"
+                onClick={() => setEdit(!edit)}
+              >
+                Edit
+              </SquareButtonEdit>
+            </CardActions>}
           </ProfileCard>
         )}
         {error && <p>{error}</p>}

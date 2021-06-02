@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { BigButton } from "../../components/buttons/content";
 import { PageContent } from "../../components/containers/content";
+import LoginFacebook from "../../components/SocialLogin/LoginFacebook";
+import LoginGoogle from "../../components/SocialLogin/LoginGoogle";
 import { logIn } from "../../services/authService";
 import { LoginContainer, LoginForm } from "./styles";
 
@@ -29,6 +31,8 @@ const Login = (props) => {
             Log In
           </BigButton>
         </LoginForm>
+        <LoginGoogle />
+        <LoginFacebook />
       </LoginContainer>
     </PageContent>
   );
