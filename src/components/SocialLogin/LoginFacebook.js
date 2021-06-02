@@ -13,7 +13,7 @@ const LoginFacebook = () => {
   return (
     <div>
       <FacebookLogin
-        appId={"494505881975143"}
+        appId={process.env.REACT_APP_FACEBOOK_CLIENT_ID}
         autoLoad={true}
         fields="name,email,picture"
         scope="public_profile,user_friends"
