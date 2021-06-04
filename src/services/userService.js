@@ -54,19 +54,23 @@ export const getUserById = async (params, id) => {
 export const deleteUser = async (id) => {
   try {
     const response = await apiUrl.delete(`/${id}`);
-    console.log({ deleteUserAPIres: response });
-    if (response && response.data) return response.data;
+    if (response) return response;
   } catch (error) {
     console.error(error);
-    throw error;
+    if (error.response) {
+      if (error.response.status === 404)
+        throw new Error("Hmm, we can't find the user to delete");
+    } else {
+      throw error;
+    }
   }
 };
 
 export const editUser = async (id, user) => {
   try {
     const response = await apiUrl.put(`/${id}`, { ...user });
-    console.log({ editUserAPIres: response });
-    if (response && response.data) return response.data;
+    if (response && response.status === 200 && response.data)
+      return response.data;
   } catch (error) {
     console.error(error);
     throw error;

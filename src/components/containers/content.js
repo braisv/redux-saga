@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.min.css";
 import { theme } from "../../theme";
 
 export const MainContainer = styled.div`
@@ -29,7 +31,7 @@ export const MainContainer = styled.div`
     margin-bottom: ${theme.content.footerMedium};
     font-size: ${theme.fontSize.regular.medium};
   }
-  
+
   @media (min-width: ${theme.breakpoints.big}) {
     min-height: calc(
       100vh - ${theme.content.navbarBig} - ${theme.content.footerBig}
@@ -41,16 +43,16 @@ export const MainContainer = styled.div`
     margin-bottom: ${theme.content.footerBig};
     font-size: ${theme.fontSize.regular.big};
   }
-  `;
+`;
 
 export const PageContent = styled.div`
   width: 100%;
   background-color: ${theme.colors.white};
   min-height: calc(
     100vh - ${theme.content.navbarSmall} - ${theme.content.footerSmall}
-    );
-    height: 100%;
-    max-width: 1920px;
+  );
+  height: 100%;
+  max-width: 1920px;
   padding: 15px;
   position: relative;
 
@@ -58,16 +60,16 @@ export const PageContent = styled.div`
     padding: 30px;
     min-height: calc(
       100vh - ${theme.content.navbarMedium} - ${theme.content.footerMedium}
-      );
-      height: 100%;
+    );
+    height: 100%;
   }
-  
+
   @media (min-width: ${theme.breakpoints.big}) {
     padding: 60px;
     min-height: calc(
       100vh - ${theme.content.navbarBig} - ${theme.content.footerBig}
-      );
-      height: 100%;
+    );
+    height: 100%;
   }
 `;
 
@@ -82,4 +84,21 @@ export const Column = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+`;
+
+export const Toast = styled(ToastContainer)`
+  .Toastify__toast {
+    &--info {
+      background-color: ${theme.colors.blue};
+    }
+    &--success {
+      background-color: ${theme.colors.success};
+    }
+    &--warning {
+      background-color: ${theme.colors.edit};
+    }
+    t--error {
+      background-color: ${theme.colors.delete};
+    }
+  }
 `;

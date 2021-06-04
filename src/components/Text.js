@@ -11,3 +11,9 @@ export const Error = styled.p`
   opacity: ${({ error }) => (error ? "1" : "0")};
   transition: all 0.2s ease;
 `;
+
+export const BigTitle = styled.h1`
+  font-size: 120px;
+  color: ${theme.colors.blue};
+  font-weight: bold;
+`;

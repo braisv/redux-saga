@@ -13,6 +13,7 @@ import { PageContent, Row } from "../../components/containers/content";
 import { Error } from "../../components/Text";
 import { deleteUser, editUser, getUserById } from "../../services/userService";
 import { theme } from "../../theme";
+import launchToast from "../../utils/toastHandler";
 import {
   ProfileCard,
   ProfileContainer,
@@ -80,36 +81,45 @@ const Profile = () => {
         email,
         avatar,
       });
-      console.log({ updateUserResponse: response });
       if (response) {
-        fetchData();
         setEdit(false);
-        console.log("[User successfully updated]", response.data);
+        setUser({ ...response, id });
+        launchToast("User successfully updated", "success");
+        console.log("[User successfully updated]", response);
       }
-      if (!response) setError("User not updated");
+      if (!response) {
+        launchToast("User could not be updated", "error");
+      }
     } catch (err) {
       console.error(err);
-      throw err;
+      launchToast("User could not be updated", "error");
     }
   };
 
   const removeUser = async () => {
     try {
       const response = await deleteUser(id);
-      console.log({ removeUserResponse: response });
-      if (response) {
+      if (response && response.status === 204) {
         history.push("/");
         setEdit(false);
+        launchToast("User successfully removed", "success");
         console.log("[User successfully removed]", user);
+      } else {
+        launchToast("User could not be removed", "error");
       }
-      if (!response) setError("User not deleted");
     } catch (err) {
       console.error(err);
-      throw err;
+      launchToast("User could not be removed", "error");
     }
   };
 
-  console.log({ error });
+  const cancelEdit = () => {
+    setEdit(false);
+    setFirstName(user.first_name);
+    setLastName(user.last_name);
+    setEmail(user.email);
+    setAvatar(user.avatar);
+  };
 
   return (
     <PageContent>
@@ -129,7 +139,7 @@ const Profile = () => {
               <>
                 {user.avatar4 || avatar ? (
                   <Avatar>
-                    <img src={user.avatar4 || avatar} alt={user.first_name} />
+                    <img src={user.avatar || avatar} alt={user.first_name} />
                   </Avatar>
                 ) : (
                   <EmptyAvatar>
@@ -177,7 +187,7 @@ const Profile = () => {
                   <CardActions>
                     <SquareButtonNeutral
                       width="50%"
-                      onClick={() => setEdit(!edit)}
+                      onClick={() => cancelEdit()}
                     >
                       Cancel
                     </SquareButtonNeutral>
