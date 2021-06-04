@@ -20,4 +20,16 @@ const FooterContainer = styled.div`
   bottom: 0;
   left: 0;
   margin-bottom: -${theme.content.footerSmall};
+
+  @media (min-width: ${theme.breakpoints.medium}) {
+    height: ${theme.content.footerMedium};
+    margin-bottom: -${theme.content.footerMedium};
+    font-size: ${theme.fontSize.regular.medium};
+  }
+  
+  @media (min-width: ${theme.breakpoints.big}) {
+    height: ${theme.content.footerBig};
+    margin-bottom: -${theme.content.footerBig};
+    font-size: ${theme.fontSize.regular.big};
+  }
 `;

@@ -1,8 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
+import BarLoader from "react-spinners/BarLoader";
 import { MediumButton } from "../../components/buttons/content";
 import { PageContent } from "../../components/containers/content";
+import { Error } from "../../components/Text";
 import { getUsers } from "../../redux/actions/users";
+import { theme } from "../../theme";
 import {
   UserCard,
   UserListContainer,
@@ -19,25 +22,26 @@ const Home = () => {
   const loading = useSelector((state) => state.users.loading);
   const error = useSelector((state) => state.users.error);
 
-  console.log({ users, loading, error });
-
   return (
     <PageContent>
       <UserListContainer>
-        {loading && <p>Loading...</p>}
-        <UserListGrid>
-          {users &&
-            users.length > 0 &&
-            users.map((user) => (
-              <UserCard
-                key={user.id}
-                onClick={() => history.push(`/user/${user.id}`)}
-              >
-                <span>{`${user.first_name} ${user.last_name}`}</span>
-              </UserCard>
-            ))}
-        </UserListGrid>
-        {error && <p>{error}</p>}
+        {loading ? (
+          <BarLoader color={theme.colors.blue} loading={loading} size={50} />
+        ) : (
+          <UserListGrid>
+            {users &&
+              users.length > 0 &&
+              users.map((user) => (
+                <UserCard
+                  key={user.id}
+                  onClick={() => history.push(`/user/${user.id}`)}
+                >
+                  <span>{`${user.first_name} ${user.last_name}`}</span>
+                </UserCard>
+              ))}
+          </UserListGrid>
+        )}
+        <Error error={error}>{error}</Error>
         <PaginationContainer>
           <MediumButton
             width="100px"

@@ -11,12 +11,12 @@ const LoginGoogle = () => {
   const onFailure = (res) => {
     console.log("[Login Google Failed] res:", res);
   };
-  console.log({ clientId: process.env.REACT_APP_GOOGLE_CLIENT_ID });
+
   return (
     <div>
       <GoogleLogin
         clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
-        buttonText="Login here Google"
+        buttonText="LOGIN WITH GOOGLE"
         onSuccess={onSuccess}
         onFailure={onFailure}
         cookiePolicy={"single_host_origin"}

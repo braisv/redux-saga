@@ -5,11 +5,10 @@ const LoginFacebook = () => {
   const history = useHistory();
   const onSuccess = (res) => {
     console.log("[Login Facebook Success] current user:", res);
-    localStorage.setItem("token", res.accessToken);
+    if (res.accessToken) localStorage.setItem("token", res.accessToken);
     history.push("/");
   };
 
-  console.log({ clientId: process.env.REACT_APP_FACEBOOK_CLIENT_ID });
   return (
     <div>
       <FacebookLogin

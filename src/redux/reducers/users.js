@@ -20,10 +20,10 @@ const users = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        users: action.users.data,
-        currentPage: action.users.page,
-        totalPages: action.users.total_pages,
-        totalUsers: action.users.total,
+        users: action?.users?.data.length > 0 ? action.users.data : [],
+        currentPage: action?.users?.page ? action.users.page : 1,
+        totalPages: action?.users?.total_pages ? action.users.total_pages : 1,
+        totalUsers: action?.users?.total ? action.users.total : 0,
       };
     case type.GET_USERS_FAILED:
       return {

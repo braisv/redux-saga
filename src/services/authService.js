@@ -1,25 +1,30 @@
 import axios from "axios";
 
 export const logIn = async (props, info) => {
-  console.log("login", info);
   try {
     if (info.email && info.password) {
-      console.log({ info });
       const { email, password } = info;
       const response = await axios.post("https://reqres.in/api/login", {
         email,
         password,
         token: true,
       });
-      console.log({ response });
       if (response && response.data) {
-        console.log({ response });
         localStorage.setItem("token", response.data.token);
-        props.history.push("/home");
+        props.history.push("/");
+        return response;
       }
+    } else {
+      console.log("[Login Failure] Invalid parameters", { info });
     }
   } catch (error) {
-    console.error(error);
+    if (error.response) {
+      const message = error.response?.data?.error;
+      return {
+        message,
+        status: error.response?.status,
+      };
+    }
     throw error;
   }
 };
@@ -27,6 +32,7 @@ export const logIn = async (props, info) => {
 export const logOut = (history) => {
   localStorage.removeItem("token");
   history.push("/");
+  console.log("[Logout]");
 };
 
 export const isLogin = () => {

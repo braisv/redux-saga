@@ -22,10 +22,10 @@ export const BigButton = styled(Button)`
   font-size: ${theme.fontSize.title.small};
   color: ${theme.colors.white};
   background-color: ${({ disabled }) =>
-    disabled ? `${theme.colors.dark}60` : theme.colors.dark};
+    disabled ? `${theme.colors.blue}60` : theme.colors.blue};
   :hover {
     background-color: ${({ disabled }) =>
-      disabled ? `${theme.colors.dark}60` : theme.colors.darkBlue};
+      disabled ? `${theme.colors.blue}60` : theme.colors.darkBlue};
     cursor: pointer;
   }
   :focus {
@@ -50,6 +50,7 @@ export const SquareMediumButton = styled(MediumButton)`
 
 // Less important or optional actions 1
 export const SquareButtonDelete = styled(SquareMediumButton)`
+  height: 50px;
   background-color: ${theme.colors.delete};
   :hover {
     background-color: ${theme.colors.deleteActive};
@@ -59,7 +60,7 @@ export const SquareButtonDelete = styled(SquareMediumButton)`
   }
 `;
 
-export const SquareButtonEdit = styled(SquareMediumButton)`
+export const SquareButtonEdit = styled(SquareButtonDelete)`
   background-color: ${theme.colors.edit};
   :hover {
     background-color: ${theme.colors.editActive};
@@ -69,7 +70,7 @@ export const SquareButtonEdit = styled(SquareMediumButton)`
   }
 `;
 
-export const SquareButtonSuccess = styled(SquareMediumButton)`
+export const SquareButtonSuccess = styled(SquareButtonDelete)`
   background-color: ${theme.colors.success};
   :hover {
     background-color: ${theme.colors.successActive};
@@ -79,7 +80,7 @@ export const SquareButtonSuccess = styled(SquareMediumButton)`
   }
 `;
 
-export const SquareButtonNeutral = styled(SquareMediumButton)`
+export const SquareButtonNeutral = styled(SquareButtonDelete)`
   background-color: ${theme.colors.neutral};
   :hover {
     background-color: ${theme.colors.neutralActive};
@@ -88,5 +89,3 @@ export const SquareButtonNeutral = styled(SquareMediumButton)`
     background-color: ${theme.colors.neutralActive};
   }
 `;
-
-
