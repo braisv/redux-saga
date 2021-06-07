@@ -24,7 +24,7 @@ const Home = () => {
 
   return (
     <PageContent>
-      <UserListContainer>
+      <UserListContainer data-testid="list-container">
         {loading ? (
           <BarLoader color={theme.colors.blue} loading={loading} size={50} />
         ) : (

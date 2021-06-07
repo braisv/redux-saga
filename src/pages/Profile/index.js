@@ -123,7 +123,7 @@ const Profile = () => {
 
   return (
     <PageContent>
-      <ProfileContainer>
+      <ProfileContainer data-testid="profile-container">
         <ProfileCard edit={edit}>
           {loading ? (
             <CardContent>
@@ -131,6 +131,7 @@ const Profile = () => {
                 color={theme.colors.blue}
                 loading={loading}
                 size={50}
+                data-testid="loading"
               />
             </CardContent>
           ) : (

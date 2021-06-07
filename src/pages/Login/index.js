@@ -53,7 +53,7 @@ const Login = (props) => {
     <LoginContainer>
       <LoginForm onSubmit={(e) => verifyLogin(e)}>
         <Box>
-          <label>EMAIL</label>
+          <label htmlFor="email">EMAIL</label>
           <input
             type="email"
             id="email"
@@ -66,7 +66,7 @@ const Login = (props) => {
           </Error>
         </Box>
         <Box>
-          <label>PASSWORD</label>
+          <label htmlFor="password">PASSWORD</label>
           <input
             type="password"
             id="password"
@@ -82,7 +82,12 @@ const Login = (props) => {
         <LoginGoogle />
         <LoginFacebook />
       </LoginForm>
-      <BarLoader color={theme.colors.blue} loading={loading} size={50} />
+      <BarLoader
+        color={theme.colors.blue}
+        loading={loading}
+        size={50}
+        data-testid="loading"
+      />
     </LoginContainer>
   );
 };
