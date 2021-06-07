@@ -39,6 +39,7 @@ export const LoginForm = styled.form`
   input {
     background-color: transparent;
     border: none;
+    border-radius: 0;
     border-bottom: 1px solid ${theme.colors.white}80;
     margin-top: 10px;
     margin-bottom: 50px;

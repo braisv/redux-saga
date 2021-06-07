@@ -20,7 +20,7 @@ const Login = (props) => {
     if (loading) return;
     const regEx = /^[^\s@]+@[^\s@]+$/;
     const validEmail = regEx.test(email);
-    const validPassword = password !== "";
+    const validPassword = password && password !== "";
     if (validEmail && validPassword) {
       setLoading(true);
       const response = await logIn(props, { email, password });
@@ -32,8 +32,9 @@ const Login = (props) => {
       }
       setLoading(false);
     } else {
-      if (!validEmail) setErrorEmail("Invalid email provided");
       if (!validPassword) setErrorPassword("Password required");
+      if (!validEmail) setErrorEmail("Invalid email provided");
+      if (!email || email === "") setErrorEmail("Email required");
     }
   };
 
@@ -54,7 +55,7 @@ const Login = (props) => {
         <Box>
           <label>EMAIL</label>
           <input
-            type="text"
+            type="email"
             id="email"
             name="email"
             placeholder="Insert valid email"

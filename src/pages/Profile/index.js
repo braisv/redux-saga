@@ -169,13 +169,13 @@ const Profile = () => {
                         value={lastName}
                       />
                       <InputText
-                        type="text"
+                        type="email"
                         placeholder="Email"
                         onChange={({ target }) => setEmail(target.value)}
                         value={email}
                       />
                       <InputText
-                        type="text"
+                        type="url"
                         placeholder="Avatar url"
                         onChange={({ target }) => setAvatar(target.value)}
                         value={avatar}
