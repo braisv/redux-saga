@@ -148,6 +148,7 @@ export const CardActions = styled(Row)`
 export const InputText = styled.input`
   background-color: transparent;
   border: none;
+  border-radius: 0;
   border-bottom: 1px solid ${theme.colors.white}80;
   margin: 5px 0;
   padding: 2px;
